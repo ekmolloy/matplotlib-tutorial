@@ -16,8 +16,8 @@ df = pandas.read_csv("../data.csv")
 # MTHD = species tree estimation METHOD
 # STEE = species tree estimation ERROR
 
-# NOTE: We want to plot
-# *average* species tree estimation error (STEE) on the y-axis versus
+# NOTE: We want to plot the
+# *average* species tree estimation error (STEE) on the y-axis versus the
 # number of genes (KEEP) used in species tree estimation on the x-axis,
 # drawing one line for each species tree estimation method (MTHD).
 
