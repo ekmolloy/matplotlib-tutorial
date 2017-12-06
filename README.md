@@ -2,7 +2,7 @@
 Hacker Within Meeting 12/06/2017 <br />
 Presenter: [Erin Molloy](http://emolloy2.web.engr.illinois.edu)
 
-**Examples depend on the following Python modules:**
+**Tutorials depend on the following Python modules:**
 * [maplotlib](https://matplotlib.org)
 * [numpy](http://www.numpy.org)
 * [pandas](https://pandas.pydata.org)
