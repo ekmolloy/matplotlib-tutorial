@@ -11,25 +11,25 @@ df = pandas.read_csv("../data.csv")
 # RATE = model condition (speciation rate)
 # NBPS = model condition (number of base pairs or sequence length)
 # GTEE = model condition (gene tree estimation error)
-# KEEP = number of genes given to the species tree estimation method (during gene filtering experiments)
+# KEEP = number of genes given to the species tree estimation method
+#        during gene filtering experiments
 # MTHD = species tree estimation METHOD
 # STEE = species tree estimation ERROR
 
+# NOTE: We want to plot
+# *average* species tree estimation error (STEE) on the y-axis versus
+# number of genes (KEEP) used in species tree estimation on the x-axis,
+# drawing one line for each species tree estimation method (MTHD).
+
 # STEP 1: Select a model condition
-df = df[(df["TRLN"] == "10M") & 
+df = df[(df["TRLN"] == "10M") &
         (df["NBPS"] == 0) &
         (df["GTEE"] == "[20,50)")]
 
 
 # STEP 2: Re-format data for plotting.
 
-# NOTE:
-# We want to plot
-# *average* species tree estimation error (STEE) on the y-axis versus
-# number of genes (KEEP) used in species tree estimation on the x-axis,
-# drawing one line for each species tree estimation method (MTHD). 
-
-# Extract data
+# STEP 3: Extract data
 mthds = df.MTHD.unique()  # List methods
 keeps = df.KEEP.unique()  # List number of genes given to methods
 
@@ -43,12 +43,12 @@ for mthd in mthds:
         row = {}
         row["MTHD"] = mthd
         row["KEEP"] = keep
-        row["STEE_AV"] = numpy.mean(stee)  # Average
-        row["STEE_SE"] = numpy.std(stee) / numpy.sqrt(stee.size)  # Standard error
+        row["STEE_AV"] = numpy.mean(stee)
+        row["STEE_SE"] = numpy.std(stee) / numpy.sqrt(stee.size)
 
         rows.append(row)
 
-# Build and save dataframe
+# STEP 4: Build and save dataframe
 df = pandas.DataFrame(rows, columns=cols)
 df.to_csv("lineplot_data.csv",
-           sep=',', na_rep="NA",head=False, index=False)
+          sep=',', na_rep="NA", head=False, index=False)
