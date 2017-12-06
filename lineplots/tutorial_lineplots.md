@@ -1,3 +1,3 @@
 # Basic Line Plot
 
-![](lineplot_basic.png)
+![](basic_lineplot.png)
