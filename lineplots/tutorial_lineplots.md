@@ -11,7 +11,7 @@ Run [python script](make_beautiful_lineplot.py): `python make_beautiful_lineplot
 Open [image file](beautiful_lineplot.png): `open beautiful_lineplot.png`
 ![](beautiful_lineplot.png)
 
-# Creating a Figure with GridSpec
+# Building a Figure with GridSpec
 
 
 # Making a "Beautiful" Line Plot with Seaborn
