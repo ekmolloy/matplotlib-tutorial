@@ -1,4 +1,4 @@
-# Preparing data frame using PANDAS
+# Preparing data frame using Pandas
 
 # Making a Basic Line Plot in Matplotlib
 ![](basic_lineplot.png)
