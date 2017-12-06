@@ -111,7 +111,7 @@ if __name__ == "__main__":
     # Add legend
     ax = matplotlib.pyplot.subplot(gs[2, 1])
     ax.legend(frameon=False, ncol=5, fontsize=12,
-              loc='upper center', bbox_to_anchor=(-0.15, -0.25)) # 0.1
+              loc='upper center', bbox_to_anchor=(-0.1, -0.25))
 
     # Save plot
     gs.tight_layout(fig, rect=[0, 0.05, 1, 1])
