@@ -1,2 +1,3 @@
 # Coming soon...
 
+![](beautiful_boxplot.png)
