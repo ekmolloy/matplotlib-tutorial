@@ -1,5 +1,6 @@
 # Basic Line Plot
 
-![Basic Line Plot](lineplot_basic.png)
 
-<img src="lineplot_basic.png" alt="Drawing" style="width: 25px;"/>
+
+<center><img src="./lineplot_basic.png" width="300"></center>
+<center>This is an image</center>
