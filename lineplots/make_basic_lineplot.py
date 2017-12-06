@@ -49,4 +49,4 @@ ax.legend(frameon=False, fontsize=12, loc="upper right")
 
 # Save plot
 fig.set_tight_layout(True)
-matplotlib.pyplot.savefig("lineplot_basic.png", format="png", dpi=300)
+matplotlib.pyplot.savefig("basic_lineplot.png", format="png", dpi=300)
