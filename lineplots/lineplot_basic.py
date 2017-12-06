@@ -27,25 +27,19 @@ for mthd, color in zip(mthds, colors):
     ydf = xdf[(xdf["MTHD"] == mthd)]
 
     # Compute average and standard error for each amount of data (KEEP)
-    av = []  # Average or Mean
-    se = []  # Standard Error = Standard Deviation / SQRT(Numer of Samples)
+    av = []  # Average across all datasets
     keeps = xdf["KEEP"].unique()
     for keep in keeps:
         zdf = ydf[ydf["KEEP"] == keep]
         ser = zdf.STEE.values
         av.append(numpy.mean(ser))
-        se.append(numpy.std(ser) / numpy.sqrt(ser.size))
     av = numpy.array(av)
-    se = numpy.array(se)
 
     # Draw line for a method
     if mthd == "caml" or mthd == "svdquartets":
         av = numpy.repeat(av[0], len(av))
-        ax.plot(keeps, av, '--',
-                color=color, label=mthd)
+        ax.plot(keeps, av, '--', color=color, label=mthd)
     else:
-        ax.fill_between(keeps, av - se, av + se, 
-                        color=color, alpha=0.25)
         ax.plot(keeps, av, '-', color=color, label=mthd)
 
 # Label axes
@@ -53,7 +47,7 @@ ax.set_xlabel("Percent Filtered", fontsize=14)
 ax.set_ylabel("Species Tree Error", fontsize=14)
 
 # Label ticks on y-axis
-ax.set_ylim(0.0, 0.20)
+ax.set_ylim(0.0, 0.15)
 ax.tick_params(axis='y', labelsize=11)
 
 # Label ticks on x-axis
