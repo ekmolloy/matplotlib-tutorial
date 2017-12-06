@@ -15,7 +15,6 @@ Open [image file](beautiful_lineplot.png): `open beautiful_lineplot.png`
 Run [python script](prepare_data_for_figure.py): `python prepare_data_for_figure.py` </br>
 Run [python script](build_figure.py): `build_figure.py` </br>
 Open [image file](figure_lineplot.png): `open figure_lineplot.png`
-![](figure_lineplot.png)
 
 # Making a "Beautiful" Line Plot with Seaborn
 Coming soon...
