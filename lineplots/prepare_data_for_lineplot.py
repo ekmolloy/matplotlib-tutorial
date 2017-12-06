@@ -26,10 +26,7 @@ df = df[(df["TRLN"] == "10M") &
         (df["NBPS"] == 0) &
         (df["GTEE"] == "[20,50)")]
 
-
 # STEP 2: Re-format data for plotting.
-
-# STEP 3: Extract data
 mthds = df.MTHD.unique()  # List methods
 keeps = df.KEEP.unique()  # List number of genes given to methods
 
@@ -48,7 +45,7 @@ for mthd in mthds:
 
         rows.append(row)
 
-# STEP 4: Build and save dataframe
+# STEP 3: Build and save dataframe
 df = pandas.DataFrame(rows, columns=cols)
 df.to_csv("lineplot_data.csv",
           sep=',', na_rep="NA", head=False, index=False)
