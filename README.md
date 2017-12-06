@@ -8,7 +8,9 @@ Presenter: [Erin Molloy](http://emolloy2.web.engr.illinois.edu)
 * [pandas](https://pandas.pydata.org)
 * [seaborn](https://seaborn.pydata.org) (optional)
 
+**Tutorials**
+* [Line plots](lineplots.md)
+* [Boxplots](boxplots.md)
 
-
-**Data come from:** <br />
+**[Data](data.csv) come from:** <br />
 Molloy E.K. & Warnow T. (2017). To include or not to include: The Impact of Gene Filtering on Species Tree Estimation Methods. Systematic Biology. In press. [doi:10.1093/sysbio/syx077](https://doi.org/10.1093/sysbio/syx077)
