@@ -4,43 +4,31 @@ import pandas
 import sys
 
 # Read in data file
-df = pandas.read_csv("../data.csv")
-
-# Select a model condition
-xdf = df[(df["TRLN"] == "10M") & 
-         (df["NBPS"] == 0) &
-         (df["GTEE"] == "[20,50)")]
+df = pandas.read_csv("data_for_lineplot.csv")
 
 # Set up plot
 fig = matplotlib.pyplot.figure(figsize=(6, 4))
-ax = fig.add_subplot(1,1,1)
-
-# Now add lines to plot, note that we want to draw 
-# one line for each method (MTHD) used to estimate the species tree with the
-# with the y-axis as the species tree estimation error (STEE) and
-# with the x-axis as the amount of data (KEEP) given to the species tree method
+ax = fig.add_subplot(1, 1, 1)
 
 # For each method add a line
-mthds = xdf["MTHD"].unique()
+mthds = df.MTHD.unique()
 colors = ['r', 'g', 'b', 'm', 'k']
+xs = df.KEEP.unique()
 for mthd, color in zip(mthds, colors):
-    ydf = xdf[(xdf["MTHD"] == mthd)]
+    ys = df[df["MTHD"] == mthd].STEE_AV.values
 
-    # Compute average and standard error for each amount of data (KEEP)
-    av = []  # Average across all datasets
-    keeps = xdf["KEEP"].unique()
-    for keep in keeps:
-        zdf = ydf[ydf["KEEP"] == keep]
-        ser = zdf.STEE.values
-        av.append(numpy.mean(ser))
-    av = numpy.array(av)
+    # Uncomment if you need to fix the ordering...
+    # ys = []
+    # for keep in xs:
+    #     xdf = df[(df["MTHD"] == mthd) & (df["KEEP"] == keep)]
+    #     ys.append(xdf.STEE_AV.values[0])
 
     # Draw line for a method
     if mthd == "caml" or mthd == "svdquartets":
-        av = numpy.repeat(av[0], len(av))
-        ax.plot(keeps, av, '--', color=color, label=mthd)
+        ys = numpy.repeat(ys[0], len(ys))
+        ax.plot(xs, ys, '--', color=color, label=mthd)
     else:
-        ax.plot(keeps, av, '-', color=color, label=mthd)
+        ax.plot(xs, ys, '-', color=color, label=mthd)
 
 # Label axes
 ax.set_xlabel("Percent Filtered", fontsize=14)
@@ -51,14 +39,14 @@ ax.set_ylim(0.0, 0.15)
 ax.tick_params(axis='y', labelsize=11)
 
 # Label ticks on x-axis
-ax.set_xlim(keeps[0], keeps[-1])
+ax.set_xlim(xs[0], xs[-1])
 ax.set_xticks([1000, 750, 500, 250, 50])
 ax.set_xticklabels(["0", "25", "50", "75", "95"])
 ax.tick_params(axis='x', labelsize=11)
 
 # Add legend
-ax.legend(frameon=False, fontsize=12, loc="upper right") 
+ax.legend(frameon=False, fontsize=12, loc="upper right")
 
 # Save plot
 fig.set_tight_layout(True)
-matplotlib.pyplot.savefig("lineplot_basic.pdf", format="pdf", dpi=300)
+matplotlib.pyplot.savefig("lineplot_basic.png", format="png", dpi=300)
